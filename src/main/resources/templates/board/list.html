@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<table class="table table-hover">
+    <tr>
+        <td>글번호</td>
+        <td>제목</td>
+        <td>닉네임</td>
+        <td>내용</td>
+        <td>날짜</td>
+    </tr>
+
+    <tr th:each="board_list:${lists}">
+        <td th:text="${board_list.num}"></td>
+        <td th:text="${board_list.title}"></td>
+        <td th:text="${board_list.name}"></td>
+        <td th:text="${board_list.content}"></td>
+        <td th:text="${board_list.createdDate}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
