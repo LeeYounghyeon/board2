@@ -1,6 +1,5 @@
 package com.example.demo.domain;
 
-import com.example.demo.converter.LocalDatePersistenceConverter;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,9 +15,6 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    @Column(name = "num")
-    private int num;
-
     @Column(name = "title")
     private  String title;
 
@@ -29,5 +25,5 @@ public class Board {
     private String content;
 
     @Column(name = "created_date")
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 }

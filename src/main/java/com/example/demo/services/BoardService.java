@@ -5,6 +5,8 @@ import com.example.demo.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -15,5 +17,10 @@ public class BoardService {
 
     public List<Board> findAll(){
        return boardRepository.findAll();
+    }
+
+    public void createdBoard(Board board){
+        board.setCreatedDate(LocalDateTime.now());
+        boardRepository.save(board);
     }
 }

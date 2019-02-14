@@ -14,24 +14,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<table class="table table-hover">
-    <tr>
-        <td>글번호</td>
-        <td>제목</td>
-        <td>닉네임</td>
-        <td>내용</td>
-        <td>날짜</td>
-    </tr>
-
-    <tr th:each="board_list:${lists}">
-        <td th:text="${board_list.idx}"></td>
-        <td th:text="${board_list.title}"></td>
-        <td th:text="${board_list.name}"></td>
-        <td th:text="${board_list.content}"></td>
-        <td th:text="${board_list.createdDate}"></td>
-    </tr>
-</table>
-<a href="/board/create"class="btn btn-default pull-right">글 등록</a>
-
+<h2>게시글 등록</h2>
+<form action="/board/create_board" method="post">
+    <table>
+        <tr>
+            <th>제목</th>
+            <td><input type="text" name="title"></td>
+        </tr>
+        <tr>
+            <th>닉네임</th>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td><textarea name="content"></textarea></td>
+        </tr>
+        <tr>
+            <td><input type="submit" vaue="저장"></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
