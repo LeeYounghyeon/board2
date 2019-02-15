@@ -16,22 +16,27 @@
 <body>
 <table class="table table-hover">
     <tr>
-        <td>글번호</td>
-        <td>제목</td>
-        <td>닉네임</td>
-        <td>내용</td>
-        <td>날짜</td>
+        <th>글 번호</th>
+        <td th:text="${board_detail.idx}"></td>
     </tr>
-
-    <tr th:each="board_list:${lists}">
-        <td th:text="${board_list.idx}"></td>
-        <td><a th:href="'/board/detail?idx='+${board_list.idx}" th:text="${board_list.title}"/></td>
-        <td th:text="${board_list.name}"></td>
-        <td th:text="${board_list.content}"></td>
-        <td th:text="${board_list.createdDate}"></td>
+    <tr>
+        <th>시간</th>
+        <td th:text="${board_detail.createdDate}"></td>
+    </tr>
+    <tr>
+        <th>제목</th>
+        <td th:text="${board_detail.title}"></td>
+    </tr>
+    <tr>
+        <th>닉네임</th>
+        <td th:text="${board_detail.name}"></td>
+    </tr>
+    <tr>
+        <th>내용</th>
+        <td th:text="${board_detail.content}"></td>
     </tr>
 </table>
-<a href="/board/create"class="btn btn-default pull-right">글 등록</a>
+<a href="/board/create"class="btn btn-default pull-right">수정하기</a>
 
 </body>
 </html>

@@ -23,4 +23,9 @@ public class BoardService {
         board.setCreatedDate(LocalDateTime.now());
         boardRepository.save(board);
     }
+
+    public Board findByBoardId(int idx){
+        long id = (long)idx;
+        return boardRepository.findById(id).orElse(new Board());
+    }
 }
