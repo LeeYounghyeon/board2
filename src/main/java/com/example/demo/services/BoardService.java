@@ -28,4 +28,9 @@ public class BoardService {
         long id = (long)idx;
         return boardRepository.findById(id).orElse(new Board());
     }
+
+    public Board updateBoard(Board board){
+        board.setCreatedDate(LocalDateTime.now());
+        return boardRepository.save(board);
+    }
 }

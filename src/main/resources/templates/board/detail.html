@@ -36,7 +36,7 @@
         <td th:text="${board_detail.content}"></td>
     </tr>
 </table>
-<a href="/board/create"class="btn btn-default pull-right">수정하기</a>
+<a th:href="'/board/update?idx='+${board_detail.idx}" class="btn btn-default pull-right">수정하기</a>
 
 </body>
 </html>

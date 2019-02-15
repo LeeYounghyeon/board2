@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,5 +26,6 @@ public class Board {
     private String content;
 
     @Column(name = "created_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime createdDate;
 }

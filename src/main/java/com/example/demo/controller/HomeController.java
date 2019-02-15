@@ -5,10 +5,7 @@ import com.example.demo.services.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -35,8 +32,20 @@ public class HomeController {
     }
 
     @GetMapping("/detail")
-    public String detail(Model model,int idx){
+    public String detail(Model model,@RequestParam(value = "idx", defaultValue = "0") int idx){
         model.addAttribute("board_detail",boardService.findByBoardId(idx));
         return "/board/detail";
+    }
+
+    @GetMapping("/update")
+    public String update(Model model, @RequestParam(value = "idx", defaultValue = "0") int idx){
+        model.addAttribute("board",boardService.findByBoardId(idx));
+        return "/board/update";
+    }
+
+    @PutMapping("/update_list")
+    public String update_list(Board board){
+        boardService.updateBoard(board);
+        return "redirect:/board/detail?idx="+board.getIdx();
     }
 }
