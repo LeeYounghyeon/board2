@@ -48,4 +48,10 @@ public class HomeController {
         boardService.updateBoard(board);
         return "redirect:/board/detail?idx="+board.getIdx();
     }
+
+    @DeleteMapping("/board_delete")
+    public String delete(@RequestParam(value = "idx", defaultValue = "0") int idx){
+        boardService.boardDelete(idx);
+        return "redirect:/board/list";
+    }
 }
