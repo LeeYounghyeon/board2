@@ -3,6 +3,9 @@ package com.example.demo.services;
 import com.example.demo.domain.Board;
 import com.example.demo.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -37,5 +40,24 @@ public class BoardService {
     public void boardDelete(int idx){
         long id = (long)idx;
         boardRepository.deleteById(id);
+    }
+
+    public int paging(){
+        int totalPageNo;
+        int pageSize=5;
+        int pageCount = (int)boardRepository.count();
+
+        totalPageNo = pageCount/pageSize;
+        if(pageCount % pageSize >0){
+            totalPageNo++;
+        }
+
+        return totalPageNo;
+    }
+
+    public Page<Board> boardListFind(int pageNo){
+        Pageable pageable;
+        pageable = PageRequest.of(pageNo,5);
+        return boardRepository.findAll(pageable);
     }
 }
