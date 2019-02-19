@@ -9,30 +9,60 @@
 
     <!-- 부가적인 테마 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <h2>게시글 등록</h2>
-<form action="/board/create_board" method="post">
+<form id="createForm">
     <table>
         <tr>
             <th>제목</th>
-            <td><input type="text" name="title"></td>
+            <td><input type="text" name="title" id="title"></td>
         </tr>
         <tr>
             <th>닉네임</th>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" name="name" id="name"></td>
         </tr>
         <tr>
             <th>내용</th>
-            <td><textarea name="content"></textarea></td>
+            <td><textarea name="content" id="content"></textarea></td>
         </tr>
         <tr>
-            <td><input type="submit" vaue="저장"></td>
+            <td><button class="btn btn-primary" id="create">저장</button></td>
         </tr>
     </table>
 </form>
+<script>
+    $('#create').click(function () {
+
+        var jsonData = JSON.stringify({
+            idx: $('#idx').val(),
+            title: $('#title').val(),
+            name: $('#name').val(),
+            content: $('#content').val(),
+            createdDate: $('#createdDate').val()
+        });
+
+        $.ajax({
+            url: "http://localhost:8080/board/create_board",
+            type: "POST",
+            data: jsonData,
+            contentType: "application/json",
+            dataType: "json",
+            success: function () {
+                alert("저장 성공!");
+                location.href = '/board/list';
+            },
+            error: function () {
+                alert("저장 실패!");
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
