@@ -46,9 +46,10 @@ public class HomeController {
     }
 
     @PutMapping("/update_list")
-    public String update_list(Board board){
+    @ResponseBody
+    public boolean update_list(@RequestBody Board board){
         boardService.updateBoard(board);
-        return "redirect:/board/detail?idx="+board.getIdx();
+        return true;
     }
 
     @DeleteMapping("/board_delete")
