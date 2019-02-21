@@ -40,10 +40,28 @@
 <a th:href="'/board/update?idx='+${board_detail.idx}" class="btn btn-default pull-right">수정하기</a>
 <a href="/board/list" class="btn btn-default pull-right">목록으로</a>
 
-<form action="/board/board_delete" th:method="delete">
-    <input type="hidden" name="idx" th:value="${board_detail.idx}">
-    <input type="submit" value="삭제">
+<form id="deleteForm">
+    <input type="hidden" name="idx" th:value="${board_detail.idx}" id="idx">
+    <button type="button" id="delete" class="btn btn-primary">삭제</button>
 </form>
+<script>
+    $('#delete').click(function () {
+        var idx = $('#idx').val();
 
+        $.ajax({
+            url: "http://localhost:8080/board/board_delete?idx="+idx,
+            type: "DELETE",
+            contentType: "application/json",
+            dataType: "json",
+            success: function () {
+                alert("삭제 성공");
+                location.href = '/board/list';
+            },
+            error: function () {
+                alert("삭제 실패");
+            }
+        });
+    });
+</script>
 </body>
 </html>
