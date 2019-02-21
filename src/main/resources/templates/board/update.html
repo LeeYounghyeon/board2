@@ -20,25 +20,25 @@
     <table class="table table-hover">
 
         <tr>
-        <th>글번호</th>
-        <td th:text="${board?.idx}" name="idx"></td>
-    </tr>
-    <tr>
-        <th>시간</th>
-        <td th:text="${board?.createdDate}" name="time"></td>
-    </tr>
-    <tr>
-        <th>제목</th>
-        <td><input type="text" name="title" th:value="${board?.title}"></td>
-    </tr>
-    <tr>
-        <th>닉네임</th>
-        <td th:text="${board?.name}" name="name"></td>
-    </tr>
-    <tr>
-        <th>내용</th>
-        <td><textarea name="content" th:text="${board?.content}" ></textarea></td>
-    </tr>
+            <th>글번호</th>
+            <td th:text="${board?.idx}" name="idx"></td>
+        </tr>
+        <tr>
+            <th>시간</th>
+            <td th:text="${board?.createdDate}" name="time"></td>
+        </tr>
+        <tr>
+            <th>제목</th>
+            <td><input type="text" name="title" th:value="${board?.title}"></td>
+        </tr>
+        <tr>
+            <th>닉네임</th>
+            <td th:text="${board?.name}" name="name"></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td><textarea name="content" th:text="${board?.content}" ></textarea></td>
+        </tr>
     </table>
 
     <input type="hidden" name="idx" th:value="${board?.idx}">
